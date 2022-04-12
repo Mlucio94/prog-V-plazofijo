@@ -1,6 +1,30 @@
-<p>Capital: {{capital}}</p>
-<button (click)='incrementa("C",1000)'>+</button>
-<p>Dias: {{dias}}</p>
-<button (click)='incrementa("D",1)'>+</button>
-<p>{{resultado}}</p>
-<p>{{simulacion|json}}</p>
+<div class="card text-center" style="width: 18rem;"> 
+    <div class="card-body">
+      <div class="m-2">
+        <button type="button" class="btn btn-dark" (click)='decrementa("C",1000)'>-</button>
+        <span class="card-subtitle m-2 text-muted">Capital: {{capital}}</span>
+        <button type="button" class="btn btn-dark" (click)='incrementa("C",1000)'>+</button>
+      </div>
+      <div class="m-2">
+        <button type="button" class="btn btn-dark" (click)='decrementa("D",30)'>-</button>
+        <span class="card-subtitle m-2 text-muted">Dias: {{dias}}</span>
+        <button type="button" class="btn btn-dark" (click)='incrementa("D",1)'>+</button>
+      </div>
+      <div class="m-2">
+        
+        <span class="card-subtitle m-2 text-muted">Tasa: {{tasa}}</span>
+        
+      </div>
+    </div>
+  </div>
+  
+<div class="card">
+    <div class="card-body">
+
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngFor="let simulacion of resultado; index as i;">{{simulacion|json}}</li>
+            
+        </ul>
+       
+    </div>
+</div>

@@ -9,16 +9,20 @@ import { SimuladoresService } from 'src/app/providers/simuladores.service';
 })
 
 export class PlazofijoComponent implements OnInit {
-  resultado : string;
+  resultado : Simulacion[];
   simulacion: Simulacion;
   capital: number;
   dias:number;
+  tasa:number;
+  interes:number;
 
   constructor(public simuladores: SimuladoresService) {
       this.capital = 1000;
-      this.dias = 30
-      this.resultado = simuladores.prueba();
-      this.simulacion  =new Simulacion(this.capital,this.dias,41)
+      this.dias = 30;
+      this.interes= 0;
+      this.tasa= 41
+      this.resultado = simuladores.verSimulaciones();
+      this.simulacion  =new Simulacion(this.capital,this.dias,this.tasa,this.interes)
    }
 
   ngOnInit(): void {
@@ -35,6 +39,29 @@ export class PlazofijoComponent implements OnInit {
       default:
         break;
     }
+    this.simuladores.addSimualcion(new Simulacion(this.capital,this.dias,this.tasa,this.interes))
+  }
+    
+  decrementa(d:string,dec:number){
+      switch(d){
+        case 'C':
+          if (this.capital > 1000){
+            this.capital -= dec;
+          }
+          break;
+        case 'D':
+          if (this.dias > 30){
+            this.dias -= dec;
+          }
+          break;
+        default:
+          break;
+      }
+      
+      this.simuladores.addSimualcion(new Simulacion(this.capital,this.dias,this.tasa,this.interes) )
   }    
+ 
 
 }
+ 
+
