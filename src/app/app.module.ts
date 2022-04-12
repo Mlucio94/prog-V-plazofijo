@@ -19,7 +19,4 @@ import { SimuladoresService } from './providers/simuladores.service';
     ReactiveFormsModule,
     FormBuilder
   ],
-  providers: [SimuladoresService],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
+  providers:  [SimuladoresService],
